@@ -160,18 +160,15 @@
     let score = 0;
 
     function hasDomOverlay(session) {
-        if (!session.domOverlayState) {
-            // DOM Overlay is not supported
-            return false;
-        }
-
-        if (!session.domOverlayState.type) {
-            // DOM Overlay is not in use
-            return false;
-        }
-
-        return true;
+    // Check if the session object is valid and has domOverlayState
+    if (!session || !session.domOverlayState || !session.domOverlayState.type) {
+        // DOM Overlay is not supported or not in use
+        return false;
     }
+
+    return true;
+}
+
 
     function positionHoop() {
         hoop.setAttribute("position", reticle.getAttribute("position"));
